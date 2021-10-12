@@ -35,7 +35,7 @@ number_of_chunks = int(round(length/chunk,0))
 # create list for chunks
 time_range = range(start,length,chunk)
 
-# create videos
+# create video chunks
 for index, i in enumerate(time_range, start=1):
     if(i<max(time_range) and index <= number_of_chunks):
         starttime = i
