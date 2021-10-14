@@ -17,7 +17,7 @@ import os
 print("Working directory: " + os.getcwd())
 
 # select video file
-required_video_file = "s01-cam1.avi"
+required_video_file = "s07-cam2.avi"
 print("Selected video file: " + required_video_file)
 
 # set start (seconds)
@@ -36,6 +36,10 @@ number_of_chunks = int(round(length/chunk,0))
 time_range = range(start,length,chunk)
 
 # create video chunks
+print("Duration source video: " + str(length) + "s")
+print("Number of chunks: " + str(number_of_chunks))
+print("Chunk duration: " + str(chunk) + "s")
+print("Start from: " + str(start))
 for index, i in enumerate(time_range, start=1):
     if(i<max(time_range) and index <= number_of_chunks):
         starttime = i
@@ -43,6 +47,6 @@ for index, i in enumerate(time_range, start=1):
         print("\nRun:" + str(index))
         print("Starttime: " + str(starttime))
         print("Endtime: " + str(endtime))
-        filename=required_video_file[:- 4] + "_" + str(index) + "_(" + str(starttime) + "-" + str(endtime) + ").avi"
+        filename=required_video_file[:- 4] + "_" + str(index) + "_(" + str(starttime) + "-" + str(endtime) + ")" + required_video_file[-4:]
         ffmpeg_extract_subclip(required_video_file, starttime, endtime, targetname=filename)
         print("Output: " + filename)
